@@ -5,7 +5,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use('/favicon.ico', express.static("favicon.ico"));
 
 app.get('/', (req, res) => {
-    const ip = req.ip;
+    const ip = req.ip.replace(/.+:/,'');
     const language = req.header("accept-language").replace(/,.+/,'');
     const operatingSystem = req.header("user-agent").replace(/\).+/,'').slice(req.header("user-agent").indexOf("(") + 1);
 
